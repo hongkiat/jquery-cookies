@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>jQuery Cookies - Hongkiat.com</title>
+
+<!--  jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../_nav/js/jquery.js"><\/script>')</script>
+
+<!-- demo scripts -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/introjs.css">
+
+<script src="js/intro.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<!-- nav script -->
+<script src="../_nav/js/nav.js" type="text/javascript"></script>
+</head>
+
+<body>
+<!-- nav meta -->
+<div class="demo-meta">
+	<h1 class="demo-title">jQuery Cookies</h1>
+	<p class="demo-desc">This demo shows one of application fo jQuery Cookies</p>
+</div>
+
+<!-- demo content -->
+<div class="demo-wrapper">
+	<ul>
+		<li data-step="1" data-intro="Lorem ipsum dolor.">
+			<h3 class="heading">Step 1</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		</li>
+		<li data-step="2" data-intro="Lorem ipsum dolor sit.">
+			<h3 class="heading">Step 2</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		</li>
+		<li data-step="3" data-intro="Lorem ipsum dolor sit amet.">
+			<h3 class="heading">Step 3</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		</li>
+		<li data-step="4" data-intro="Lorem ipsum dolor sit amet, consectetur adipisicing.">
+			<h3 class="heading">Step 4</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		</li>
+	</ul>
+</div>
+
+<!-- cookie script -->
+<script>
+(function() {
+	var name = 'IntroJS';
+	var value = localStorage.getItem(name) || $.cookie(name);
+	var func = function() {
+			if (Modernizr.localstorage) {
+				localStorage.setItem(name, 1)
+			} else {
+			  	$.cookie(name, 1, {
+					expires: 365
+				});
+			}
+		};
+	// run the function
+	if(value == null) {
+		introJs().start().oncomplete(func).onexit(func);
+	};
+}());
+</script>
+
+</body>
+</html>
